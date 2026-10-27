@@ -178,31 +178,7 @@
     <a class="btn ghost" href="mailto:daniel.stokes@ariaengaged.co.uk?subject=QER%20pilot">Propose a pilot</a>
   </div>
 
-  <section>
-    <div class="eyebrow">see it run</div>
-    <h2>Three clocks, one race</h2>
-    <p>An insured's data is exposed only if a quantum computer arrives before the insured finishes
-      migrating to quantum-safe cryptography, and before the data's retention window closes. Move the
-      migration-maturity control below; the model recalculates live, in your browser.</p>
-    <div class="demo">
-      <svg id="chart" viewBox="0 0 680 280" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Survival curves for quantum arrival and migration completion"></svg>
-      <div class="legend">
-        <span><i class="swatch" style="background:var(--ink)"></i>Quantum still hasn't arrived</span>
-        <span><i class="swatch" style="background:var(--teal)"></i>Migration still incomplete</span>
-        <span><i class="swatch" style="background:var(--ink-soft)"></i>Data retention window</span>
-      </div>
-      <div class="control">
-        <label><span>Migration maturity (CAMM level)</span><span id="camm-label">1 — Possible, manual</span></label>
-        <input type="range" id="camm" min="0" max="4" step="1" value="1">
-      </div>
-      <div class="readout">
-        <span>Exposure probability: <b id="exp-out">—</b></span>
-        <span>Quantum scenario: <b>central</b> &nbsp;·&nbsp; Enterprise size: <b>medium</b> &nbsp;·&nbsp; Retention: <b>15y</b></span>
-      </div>
-    </div>
-  </section>
 
-  <hr class="rule">
 
   <section>
     <div class="eyebrow">provenance</div>
@@ -261,73 +237,5 @@
 </footer>
 </div>
 
-<script>
-"use strict";
-function quantumSurvival(t, l0, g) { return Math.exp(-(l0/g) * (Math.exp(g*t) - 1.0)); }
-function migrationSurvival(t, beta, eta) { if (t <= 0) return 1.0; return Math.exp(-Math.pow(t/eta, beta)); }
-function simpson(f, a, b, n) {
-  n = n || 2000; if (n % 2 !== 0) n += 1; if (b <= a) return 0.0;
-  const h = (b-a)/n; let total = f(a) + f(b);
-  for (let i=1; i<n; i++) { const x = a + i*h; total += (i % 2 === 1 ? 4.0 : 2.0) * f(x); }
-  return total * h / 3.0;
-}
-function quantumDensity(t, l0, g) { return l0 * Math.exp(g*t) * quantumSurvival(t, l0, g); }
-
-const QUANTUM_CENTRAL = { l0: 0.01957, g: 0.142 };
-const CAMM = {
-  0: { name: "0 — Initial, hardcoded", beta: 0.7 },
-  1: { name: "1 — Possible, manual", beta: 0.9 },
-  2: { name: "2 — Prepared, modular", beta: 1.2 },
-  3: { name: "3 — Practiced, automated", beta: 1.6 },
-  4: { name: "4 — Sophisticated, pervasive", beta: 2.2 },
-};
-const ETA_MEDIUM = { 0: 13.5, 1: 11.75, 2: 10.0, 3: 8.5, 4: 7.0 };
-const RETENTION = 15;
-
-function drawChart(level) {
-  const W = 680, H = 280, padL = 36, padB = 34, padT = 14, padR = 14;
-  const plotW = W - padL - padR, plotH = H - padT - padB;
-  const beta = CAMM[level].beta, eta = ETA_MEDIUM[level];
-  const tMax = 25;
-  const n = 120;
-  const pts = [];
-  for (let i = 0; i <= n; i++) {
-    const t = (i/n) * tMax;
-    pts.push({ t, q: quantumSurvival(t, QUANTUM_CENTRAL.l0, QUANTUM_CENTRAL.g), m: migrationSurvival(t, beta, eta) });
-  }
-  const x = t => padL + (t/tMax) * plotW;
-  const y = v => padT + (1-v) * plotH;
-  const qPath = pts.map((p,i) => (i?"L":"M") + x(p.t).toFixed(1) + " " + y(p.q).toFixed(1)).join(" ");
-  const mPath = pts.map((p,i) => (i?"L":"M") + x(p.t).toFixed(1) + " " + y(p.m).toFixed(1)).join(" ");
-  const retX = x(RETENTION).toFixed(1);
-
-  const f = t => quantumDensity(t, QUANTUM_CENTRAL.l0, QUANTUM_CENTRAL.g) * migrationSurvival(t, beta, eta);
-  const expProb = Math.min(Math.max(simpson(f, 0, RETENTION, 2000), 0), 1);
-
-  const gridY = [0, 0.25, 0.5, 0.75, 1].map(f => {
-    const yy = y(f).toFixed(1);
-    return `<line x1="${padL}" y1="${yy}" x2="${W-padR}" y2="${yy}" stroke="var(--rule)" stroke-width="1" opacity="0.6"/>`
-      + `<text x="${padL-8}" y="${(+yy+3)}" fill="var(--ink-soft)" font-size="10" text-anchor="end" font-family="var(--mono)">${f.toFixed(2)}</text>`;
-  }).join("");
-  const xLabels = [0,5,10,15,20,25].map(t =>
-    `<text x="${x(t).toFixed(1)}" y="${H-padB+18}" fill="var(--ink-soft)" font-size="10" text-anchor="middle" font-family="var(--mono)">${t}y</text>`
-  ).join("");
-
-  document.getElementById("chart").innerHTML = `
-    ${gridY}
-    <rect x="${retX}" y="${padT}" width="${(W-padR-retX).toFixed(1)}" height="${plotH}" fill="var(--ink-soft)" opacity="0.08"/>
-    <line x1="${retX}" y1="${padT}" x2="${retX}" y2="${H-padB}" stroke="var(--ink-soft)" stroke-width="1.4" stroke-dasharray="3,3"/>
-    <path d="${qPath}" fill="none" stroke="var(--ink)" stroke-width="2.2"/>
-    <path d="${mPath}" fill="none" stroke="var(--teal)" stroke-width="2.2"/>
-    ${xLabels}
-  `;
-  document.getElementById("camm-label").textContent = CAMM[level].name;
-  document.getElementById("exp-out").textContent = (expProb*100).toFixed(1) + "%";
-}
-
-const slider = document.getElementById("camm");
-slider.addEventListener("input", () => drawChart(parseInt(slider.value, 10)));
-drawChart(1);
-</script>
 </body>
 </html>
