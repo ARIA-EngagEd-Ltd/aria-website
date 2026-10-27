@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>QER — Quantum Exposure Risk</title>
-<meta name="description" content="A competing-risks actuarial model for Harvest-Now-Decrypt-Later cyber risk. Every number is either cited or labeled a placeholder.">
+<meta name="description" content="A competing-risks model that turns Harvest-Now-Decrypt-Later risk into a score, a pricing multiplier and an underwriting decision for cyber insurers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -112,12 +112,13 @@
   tr:last-child td { border-bottom: none; }
   th { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 500; color: var(--ink-soft); }
   td { color: var(--ink); }
-  td.status-orig { color: var(--teal-bright); font-family: var(--mono); font-size: 0.8rem; white-space: nowrap; }
-  td.status-borrow { color: var(--ink-soft); font-family: var(--mono); font-size: 0.8rem; white-space: nowrap; }
+  td.status-orig { color: var(--teal-bright); font-family: var(--mono); font-size: 0.8rem; }
+  td.status-borrow { color: var(--ink-soft); font-family: var(--mono); font-size: 0.8rem; }
   .strip { border-left: 3px solid var(--teal); padding: 22px 24px; }
   .strip .num { font-family: var(--mono); font-size: 2.2rem; font-weight: 500; color: #fff; line-height: 1; text-shadow: 0 0 22px rgba(28,171,169,0.35); }
   .strip .label { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); margin-top: 8px; }
   .strip p { margin-top: 16px; margin-bottom: 0; font-size: 0.97rem; }
+  .note { font-size: 0.88rem; margin-top: 14px; }
   footer.qer-foot { border-top: 1px solid var(--rule); padding-top: 24px; font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   footer.qer-foot a { color: var(--ink-soft); }
   footer.site{padding:32px 24px;border-top:1px solid var(--rule);font-size:0.85rem;color:var(--ink-soft);text-align:center;}
@@ -163,9 +164,9 @@
   </header>
 
   <h1>Every number here is either <span class="accent">cited or labeled a guess.</span></h1>
-  <p class="sub">QER prices Harvest-Now-Decrypt-Later exposure for cyber insurers: the risk that encrypted
-    data intercepted today is decrypted once a quantum computer exists. It is a competing-risks model
-    built around three clocks, not a black box.</p>
+  <p class="sub">QER turns Harvest-Now-Decrypt-Later risk into a score, a pricing multiplier and an
+    underwriting decision for cyber insurers: the risk that encrypted data intercepted today is decrypted
+    once a quantum computer exists. It is a competing-risks model built around three clocks, not a black box.</p>
   <div class="cta-row">
     <form class="lead-form" action="https://formspree.io/f/xoejznpk" method="POST">
       <input type="hidden" name="_subject" value="QER white paper request">
@@ -183,40 +184,48 @@
   <section>
     <div class="eyebrow">provenance</div>
     <h2>What's borrowed, what's ours</h2>
-    <p>The inputs are not invented. The method that turns them into a price is.</p>
+    <p>QER doesn't make new estimates of quantum timelines, migration speed or breach severity. Those come
+      from published work. What QER adds is the method that combines them into one actuarial signal.</p>
     <div class="glass table-glass">
     <table>
-      <thead><tr><th>Component</th><th>Source</th><th></th></tr></thead>
+      <thead><tr><th>Component</th><th>Source</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td>Quantum arrival timeline</td><td>GRI / evolutionQ, 2025 survey</td><td class="status-borrow">borrowed</td></tr>
-        <tr><td>Migration maturity levels</td><td>CAMM, Hochschule Darmstadt, 2022</td><td class="status-borrow">borrowed</td></tr>
-        <tr><td>Migration duration by size</td><td>Campbell, Computers, 2026</td><td class="status-borrow">borrowed</td></tr>
-        <tr><td>Breach severity weighting</td><td>UK ICO, 2019–2025</td><td class="status-borrow">borrowed</td></tr>
-        <tr><td>Competing-risks scoring method</td><td>&nbsp;</td><td class="status-orig">original</td></tr>
-        <tr><td>Relativity pricing bridge</td><td>&nbsp;</td><td class="status-orig">original</td></tr>
-        <tr><td>Portfolio systemic-risk curve</td><td>&nbsp;</td><td class="status-orig">original</td></tr>
+        <tr><td>Quantum arrival timeline</td><td>GRI and evolutionQ, Quantum Threat Timeline Report 2025</td><td class="status-borrow">borrowed, fitted to survey ranges</td></tr>
+        <tr><td>Migration maturity levels and shape</td><td>CAMM (Hohm et al., 2022)</td><td class="status-borrow">borrowed concept; shape values are a placeholder</td></tr>
+        <tr><td>Migration scale by enterprise size</td><td>Campbell, Computers, 2026</td><td class="status-borrow">borrowed and sourced</td></tr>
+        <tr><td>Crypto agility maturity, corroboration</td><td>NIST CSWP 39, final, December 2025</td><td class="status-borrow">supporting reference</td></tr>
+        <tr><td>Breach severity weighting</td><td>UK ICO breach data, Q1 2019 to Q4 2025</td><td class="status-borrow">borrowed, empirical input</td></tr>
+        <tr><td>Three-clock competing-risks structure</td><td>QER white paper</td><td class="status-orig">our approach, building on Mosca's inequality</td></tr>
+        <tr><td>Scoring and aggregation method</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
+        <tr><td>Relativity pricing bridge</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
+        <tr><td>Underwriting lever mapping</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
+        <tr><td>Portfolio systemic-risk view</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
       </tbody>
     </table>
     </div>
+    <p class="note">Related models exist, including QARS (Electronics, 2025) and Rufino et al.'s IEQ (arXiv, 2026). The white paper sets out how QER differs.</p>
   </section>
 
   <section>
     <div class="strip">
-      <div class="num">26.4<span style="font-size:18px;color:var(--ink-soft)"> / 100</span></div>
-      <div class="label">worked example — medium enterprise, central scenario</div>
-      <p>A mid-sized insurer holding health data at low migration maturity scores 26 under central
-        assumptions: a modest premium loading, not a decline. The same account at a higher maturity
-        level scores materially lower without changing a single dollar of value at risk, by design.</p>
+      <div class="num">26.39<span style="font-size:18px;color:var(--ink-soft)"> / 100</span></div>
+      <div class="label">worked example &middot; central scenario &middot; &kappa; = 1e-7, uncalibrated</div>
+      <p>One insured holding health, identification and financial data, with &pound;15m at risk, scores 26.39.
+        That gives a relativity of 1.211, a loading of about 21 percent on the insurer's base rate, in the
+        Elevated band. The same data at a higher migration maturity would score lower without a single pound changing.</p>
+      <p>&kappa; is not calibrated. With every other input fixed, &kappa; alone moves this account from Standard
+        to Severe. Until an insurer sets it from real loss experience, read QER as a ranking of accounts under
+        one &kappa;, not as an absolute measure of risk.</p>
     </div>
   </section>
 
   <section>
     <div class="eyebrow">status</div>
     <h2>Where this actually stands</h2>
-    <p>Every input above is either sourced to a named, checkable reference, or explicitly labeled an
-      unvalidated placeholder: it is not claimed to be more certain than it is. What QER cannot do yet
-      is validate against real losses, because no Harvest-Now-Decrypt-Later claim has been paid anywhere
-      in the market to validate against. That is the gap a design partner closes.</p>
+    <p>QER is a solid first version, not a finished actuarial standard. Its inputs come from named,
+      checkable sources. The migration shape values and &kappa; are placeholders, and are labeled as such.
+      What QER can't do yet is validate against real losses, because there is no HNDL claims experience
+      to validate against. That is the gap a design partner closes.</p>
   </section>
 
   <footer class="qer-foot">
