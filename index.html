@@ -219,6 +219,82 @@
   </div>
 </section>
 
+<section id="qer-whitepaper-gate" class="qer-section">
+  <style>
+    .qer-section { padding: 56px 0 72px; }
+    .qer-glass {
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center;
+      padding: 36px;
+      background: linear-gradient(135deg, rgba(28,171,169,0.14), rgba(20,30,45,0.42) 45%, rgba(11,61,96,0.30));
+      backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid rgba(28,171,169,0.30); border-radius: 18px;
+      box-shadow: 0 0 50px rgba(28,171,169,0.12), inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.25);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .qer-glass:hover { border-color: rgba(28,171,169,0.50); box-shadow: 0 0 60px rgba(28,171,169,0.18), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.25); }
+    .qer-glass::before {
+      content: ""; position: absolute; top: -120px; right: -80px; width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(28,171,169,0.22), transparent 70%); pointer-events: none;
+    }
+    .qer-glass > * { position: relative; }
+    .qer-plate { padding: 0; }
+    .qer-plate img { height: 120px; width: auto; display: block; filter: drop-shadow(0 0 14px rgba(28,171,169,0.35)); }
+    .qer-status {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #5FD3D1; border: 1px solid rgba(28,171,169,0.35); background: rgba(28,171,169,0.08);
+      padding: 6px 12px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .qer-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #1CABA9; box-shadow: 0 0 8px #1CABA9; }
+    .qer-glass h2 { font-size: clamp(1.35rem, 3vw, 1.7rem); line-height: 1.2; color: #fff; margin: 0 0 10px; text-shadow: 0 0 24px rgba(28,171,169,0.30); }
+    .qer-glass p { margin: 0; color: var(--ink-dim); font-size: 0.98rem; max-width: 56ch; }
+    .qer-glass p a { color: #5FD3D1; text-decoration: none; font-weight: 600; white-space: nowrap; }
+    .qer-glass p a:hover { text-decoration: underline; }
+    .qer-form { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .qer-form input {
+      flex: 1 1 180px; min-width: 0; padding: 12px 14px; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+      color: var(--ink); background: rgba(0,0,0,0.30); border: 1px solid rgba(233,242,242,0.12); border-radius: 8px;
+    }
+    .qer-form input::placeholder { color: rgba(159,179,181,0.75); }
+    .qer-form input:focus { border-color: rgba(28,171,169,0.60); outline: none; box-shadow: 0 0 0 3px rgba(28,171,169,0.18); }
+    .qer-form button {
+      flex: 0 0 auto; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.92rem;
+      padding: 12px 24px; border-radius: 8px; border: none; cursor: pointer; color: #03151a;
+      background: linear-gradient(90deg, #1CABA9, #5FD3D1); box-shadow: 0 0 24px rgba(28,171,169,0.35);
+    }
+    .qer-form button:hover { box-shadow: 0 0 32px rgba(28,171,169,0.55); }
+    .qer-form button:focus-visible, .qer-glass a:focus-visible { outline: 2px solid #5FD3D1; outline-offset: 2px; }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .qer-glass { background: rgba(14,26,40,0.92); }
+    }
+    @media (max-width: 640px) {
+      .qer-glass { grid-template-columns: 1fr; gap: 22px; padding: 24px 20px; }
+      .qer-plate { justify-self: start; }
+      .qer-plate img { height: 92px; }
+      .qer-form button { flex: 1 1 100%; }
+    }
+  </style>
+  <div class="wrap">
+    <div class="qer-glass">
+      <div class="qer-plate"><img src="qer-logo-dark.png" alt="QER - Quantum Exposure Risk" width="110" height="120"></div>
+      <div>
+        <div class="qer-status">Pre-pilot &middot; Open for one design partner</div>
+        <h2>Quantum Exposure Risk white paper</h2>
+        <p>A competing-risks actuarial model pricing Harvest-Now-Decrypt-Later exposure for cyber insurers. <a href="qer.html">About QER &rarr;</a></p>
+      </div>
+      <form class="qer-form" action="https://formspree.io/f/xoejznpk" method="POST">
+        <input type="hidden" name="_subject" value="QER white paper request (homepage)">
+        <input type="hidden" name="source" value="homepage">
+        <input type="text" name="name" placeholder="Name" required aria-label="Name">
+        <input type="email" name="email" placeholder="Work email" required aria-label="Work email">
+        <input type="text" name="company" placeholder="Company (optional)" aria-label="Company">
+        <button type="submit">Request the white paper</button>
+      </form>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap" style="text-align:center;">
     ARIA EngagEd Ltd &middot; <a href="mailto:daniel.stokes@ariaengaged.co.uk">daniel.stokes@ariaengaged.co.uk</a>
@@ -394,14 +470,6 @@ async function doHash(){
 })();
 </script>
 
-
-<section id="qer-whitepaper-gate" style="background-color: #0B1B3D; color: #FFFFFF; padding: 5rem 1rem; font-family: sans-serif; text-align: center;">
-  <div style="max-width: 800px; margin: 0 auto;">
-    <h2 style="font-size: 2rem; margin-bottom: 1rem;">Quantum Exposure Risk White Paper</h2>
-    <p style="color: #A0AEC0; margin-bottom: 2rem;">Download the competing-risks actuarial model documentation.</p>
-    <a href="QER-White-Paper.pdf" download style="background: #0090A1; color: #FFFFFF; padding: 1rem 2rem; border-radius: 6px; text-decoration: none; font-weight: bold;">Download PDF</a>
-  </div>
-</section>
 
 </body>
 </html>
