@@ -119,6 +119,10 @@
   .strip .label { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); margin-top: 8px; }
   .strip p { margin-top: 16px; margin-bottom: 0; font-size: 0.97rem; }
   .note { font-size: 0.88rem; margin-top: 14px; }
+  a.src { color: var(--ink); text-decoration: underline; text-decoration-color: rgba(95,211,209,0.45); text-underline-offset: 3px; }
+  a.src:hover { color: var(--teal-bright); text-decoration-color: var(--teal-bright); }
+  a.src::after { content: " \2197"; font-size: 0.75em; color: var(--teal-bright); }
+  .note a.src { color: var(--ink-soft); }
   footer.qer-foot { border-top: 1px solid var(--rule); padding-top: 24px; font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
   footer.qer-foot a { color: var(--ink-soft); }
   footer.site{padding:32px 24px;border-top:1px solid var(--rule);font-size:0.85rem;color:var(--ink-soft);text-align:center;}
@@ -190,11 +194,11 @@
     <table>
       <thead><tr><th>Component</th><th>Source</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td>Quantum arrival timeline</td><td>GRI and evolutionQ, Quantum Threat Timeline Report 2025</td><td class="status-borrow">borrowed, fitted to survey ranges</td></tr>
-        <tr><td>Migration maturity levels and shape</td><td>CAMM (Hohm et al., 2022)</td><td class="status-borrow">borrowed concept; shape values are a placeholder</td></tr>
-        <tr><td>Migration scale by enterprise size</td><td>Campbell, Computers, 2026</td><td class="status-borrow">borrowed and sourced</td></tr>
-        <tr><td>Crypto agility maturity, corroboration</td><td>NIST CSWP 39, final, December 2025</td><td class="status-borrow">supporting reference</td></tr>
-        <tr><td>Breach severity weighting</td><td>UK ICO breach data, Q1 2019 to Q4 2025</td><td class="status-borrow">borrowed, empirical input</td></tr>
+        <tr><td>Quantum arrival timeline</td><td><a class="src" href="https://globalriskinstitute.org/publication/quantum-threat-timeline-report-2025b/" target="_blank" rel="noopener">GRI and evolutionQ, Quantum Threat Timeline Report 2025</a></td><td class="status-borrow">borrowed, fitted to survey ranges</td></tr>
+        <tr><td>Migration maturity levels and shape</td><td><a class="src" href="https://arxiv.org/abs/2202.07645" target="_blank" rel="noopener">CAMM (Hohm et al., 2022)</a></td><td class="status-borrow">borrowed concept; shape values are a placeholder</td></tr>
+        <tr><td>Migration scale by enterprise size</td><td><a class="src" href="https://doi.org/10.3390/computers15010009" target="_blank" rel="noopener">Campbell, Computers, 2026</a></td><td class="status-borrow">borrowed and sourced</td></tr>
+        <tr><td>Crypto agility maturity, corroboration</td><td><a class="src" href="https://doi.org/10.6028/NIST.CSWP.39" target="_blank" rel="noopener">NIST CSWP 39, final, December 2025</a></td><td class="status-borrow">supporting reference</td></tr>
+        <tr><td>Breach severity weighting</td><td><a class="src" href="https://ico.org.uk/action-weve-taken/data-security-incident-trends" target="_blank" rel="noopener">UK ICO breach data, Q2 2019 to Q4 2025</a></td><td class="status-borrow">borrowed, empirical input</td></tr>
         <tr><td>Three-clock competing-risks structure</td><td>QER white paper</td><td class="status-orig">our approach, building on Mosca's inequality</td></tr>
         <tr><td>Scoring and aggregation method</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
         <tr><td>Relativity pricing bridge</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
@@ -203,7 +207,7 @@
       </tbody>
     </table>
     </div>
-    <p class="note">Related models exist, including QARS (Electronics, 2025) and Rufino et al.'s IEQ (arXiv, 2026). The white paper sets out how QER differs.</p>
+    <p class="note">Related models exist, including <a class="src" href="https://doi.org/10.3390/electronics14173338" target="_blank" rel="noopener">QARS (Electronics, 2025)</a> and <a class="src" href="https://arxiv.org/abs/2605.22569" target="_blank" rel="noopener">Rufino et al.'s IEQ (arXiv, 2026)</a>. The white paper sets out how QER differs.</p>
   </section>
 
   <section>
