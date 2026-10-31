@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>QER — Quantum Exposure Risk</title>
-<meta name="description" content="A competing-risks model that turns Harvest-Now-Decrypt-Later risk into a score, a pricing multiplier and an underwriting decision for cyber insurers.">
+<meta name="description" content="QER measures harvest-now, decrypt-later quantum exposure as the overlap of three clocks: quantum arrival, migration and data consequence. A pre-pilot framework for cyber insurers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -128,6 +128,22 @@
   footer.site{padding:32px 24px;border-top:1px solid var(--rule);font-size:0.85rem;color:var(--ink-soft);text-align:center;}
   footer.site a{color:var(--cyan);text-decoration:none;}
   footer.site .foot-links{margin-top:10px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap;}
+  .eq { white-space: nowrap; font-family: var(--mono); color: var(--teal-bright); font-size: clamp(0.82rem, 2.6vw, 1.15rem); padding: 18px 20px; text-align: center; overflow-x: auto; margin-bottom: 16px; }
+  .clocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .clock, .box { padding: 20px; }
+  .clock .k, .box .k { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal-bright); margin-bottom: 8px; }
+  .clock h3 { font-family: var(--display); font-size: 1.05rem; color: #fff; margin: 0 0 8px; }
+  .clock p { font-size: 0.92rem; margin: 0; }
+  .points { list-style: none; padding: 0; margin: 0; }
+  .points li { color: var(--ink-soft); padding: 14px 0 14px 26px; border-bottom: 1px solid var(--rule); position: relative; max-width: 68ch; }
+  .points li::before { content: ""; position: absolute; left: 0; top: 22px; width: 10px; height: 10px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); }
+  .points b { color: var(--ink); font-weight: 600; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .box ul { margin: 0; padding-left: 18px; color: var(--ink); font-size: 0.95rem; }
+  .box li { margin-bottom: 6px; }
+  .box.dim .k { color: var(--ink-soft); }
+  .box.dim ul { color: var(--ink-soft); }
+  @media (max-width: 680px) { .clocks, .two { grid-template-columns: 1fr; } table { font-size: 0.85rem; } }
   @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
     .glass, .lead-form, .demo, .strip { background: rgba(14,26,40,0.92); }
   }
@@ -164,16 +180,17 @@
 
   <header class="top">
     <div class="mark"><img src="qer-logo-dark.png" alt="QER - Quantum Exposure Risk" width="66" height="72"></div>
-    <div class="status">Pre-pilot &middot; Open for one design partner</div>
+    <div class="status">Pre-pilot &middot; v3 &middot; Open for one design partner</div>
   </header>
 
-  <h1>Every number here is either <span class="accent">cited or labeled a guess.</span></h1>
-  <p class="sub">QER turns Harvest-Now-Decrypt-Later risk into a score, a pricing multiplier and an
-    underwriting decision for cyber insurers: the risk that encrypted data intercepted today is decrypted
-    once a quantum computer exists. It is a competing-risks model built around three clocks, not a black box.</p>
+  <div class="eyebrow">QER working white paper &middot; v3 &middot; 30 October 2026</div>
+  <h1>Three clocks to Q-Day. <span class="accent">What would still be exposed if it arrived?</span></h1>
+  <p class="sub">Data encrypted today can be harvested now and decrypted later. QER measures that exposure as the
+    overlap of three clocks: when quantum capability arrives, when migration completes and when the data stops
+    mattering. It is a pre-pilot framework for cyber insurers to evaluate, not a price.</p>
   <div class="cta-row">
     <form class="lead-form" action="https://formspree.io/f/xoejznpk" method="POST">
-      <input type="hidden" name="_subject" value="QER white paper request">
+      <input type="hidden" name="_subject" value="QER v3 white paper request">
       <input type="hidden" name="source" value="qer-page">
       <input type="text" name="name" placeholder="Name" required aria-label="Name">
       <input type="email" name="email" placeholder="Work email" required aria-label="Work email">
@@ -183,53 +200,65 @@
     <a class="btn ghost" href="mailto:daniel.stokes@ariaengaged.co.uk?subject=QER%20pilot">Propose a pilot</a>
   </div>
 
+  <section>
+    <div class="eyebrow">the model</div>
+    <h2>Exposure is the overlap of three clocks</h2>
+    <div class="glass eq">E<sub>d</sub> = &int; f<sub>Q</sub>(t | I<sub>&tau;</sub>) &middot; S<sub>M,d</sub>(t) &middot; V<sub>d</sub>(t) dt</div>
+    <div class="clocks">
+      <div class="glass clock"><div class="k">01 &middot; quantum</div><h3>When capability arrives</h3><p>A distribution over arrival times, updated as evidence changes. No single Q-Day date is needed.</p></div>
+      <div class="glass clock"><div class="k">02 &middot; migration</div><h3>When migration completes</h3><p>How long vulnerable key establishment persists, judged on evidence rather than plans.</p></div>
+      <div class="glass clock"><div class="k">03 &middot; data</div><h3>When consequence ends</h3><p>How long compromise still matters. Deleting your copy doesn't remove one harvested earlier.</p></div>
+    </div>
+  </section>
 
+  <section>
+    <div class="eyebrow">what v3 adds</div>
+    <h2>Constraints that make it defensible</h2>
+    <ul class="points">
+      <li><b>Key establishment, not signatures.</b> Only KEM/DH migration reduces HNDL exposure. Signature migration is tracked as a separate, forward-looking authentication risk.</li>
+      <li><b>Evidence, not intent.</b> Declared plans, technical observations and production evidence carry different weight. Strong evidence over narrow scope can't establish the whole estate.</li>
+      <li><b>Evidence expires.</b> Favourable technical evidence lapses after a provisional 30 days unless re-observed. Adverse findings don't expire.</li>
+      <li><b>Monotone migration.</b> A demonstrably stronger migration state can never show more exposure because two fitted curves cross.</li>
+      <li><b>Q-Day is a common event.</b> Separate records and shared providers can't create artificial diversification across a portfolio.</li>
+      <li><b>Relative, not absolute.</b> RARI compares an account with a governed benchmark. It is not a premium multiplier.</li>
+    </ul>
+  </section>
 
   <section>
     <div class="eyebrow">provenance</div>
     <h2>What's borrowed, what's ours</h2>
-    <p>QER doesn't make new estimates of quantum timelines, migration speed or breach severity. Those come
-      from published work. What QER adds is the method that combines them into one actuarial signal.</p>
+    <p>External sources supply the cryptographic threat, the post-quantum standards and the migration guidance.
+      The modelling propositions are QER's own and remain provisional. Citing a source does not imply its endorsement.</p>
     <div class="glass table-glass">
     <table>
       <thead><tr><th>Component</th><th>Source</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td>Quantum arrival timeline</td><td><a class="src" href="https://globalriskinstitute.org/publication/quantum-threat-timeline-report-2025b/" target="_blank" rel="noopener">GRI and evolutionQ, Quantum Threat Timeline Report 2025</a></td><td class="status-borrow">borrowed, fitted to survey ranges</td></tr>
-        <tr><td>Migration maturity levels and shape</td><td><a class="src" href="https://arxiv.org/abs/2202.07645" target="_blank" rel="noopener">CAMM (Hohm et al., 2022)</a></td><td class="status-borrow">borrowed concept; shape values are a placeholder</td></tr>
-        <tr><td>Migration scale by enterprise size</td><td><a class="src" href="https://doi.org/10.3390/computers15010009" target="_blank" rel="noopener">Campbell, Computers, 2026</a></td><td class="status-borrow">borrowed and sourced</td></tr>
-        <tr><td>Crypto agility maturity, corroboration</td><td><a class="src" href="https://doi.org/10.6028/NIST.CSWP.39" target="_blank" rel="noopener">NIST CSWP 39, final, December 2025</a></td><td class="status-borrow">supporting reference</td></tr>
-        <tr><td>Breach severity weighting</td><td><a class="src" href="https://ico.org.uk/action-weve-taken/data-security-incident-trends" target="_blank" rel="noopener">UK ICO breach data, Q2 2019 to Q4 2025</a></td><td class="status-borrow">borrowed, empirical input</td></tr>
-        <tr><td>Three-clock competing-risks structure</td><td>QER white paper</td><td class="status-orig">our approach, building on Mosca's inequality</td></tr>
-        <tr><td>Scoring and aggregation method</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
-        <tr><td>Relativity pricing bridge</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
-        <tr><td>Underwriting lever mapping</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
-        <tr><td>Portfolio systemic-risk view</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
+        <tr><td>Quantum threat to public-key cryptography</td><td><a class="src" href="https://doi.org/10.1109/SFCS.1994.365700" target="_blank" rel="noopener">Shor, 1994</a></td><td class="status-borrow">external foundation</td></tr>
+        <tr><td>Post-quantum standards</td><td><a class="src" href="https://doi.org/10.6028/NIST.FIPS.203" target="_blank" rel="noopener">NIST FIPS 203</a>, <a class="src" href="https://doi.org/10.6028/NIST.FIPS.204" target="_blank" rel="noopener">204</a> and <a class="src" href="https://doi.org/10.6028/NIST.FIPS.205" target="_blank" rel="noopener">205</a></td><td class="status-borrow">external standard</td></tr>
+        <tr><td>Transition timelines</td><td><a class="src" href="https://doi.org/10.6028/NIST.IR.8547" target="_blank" rel="noopener">NIST IR 8547</a>; NCSC migration timelines (2025)</td><td class="status-borrow">external guidance</td></tr>
+        <tr><td>Readiness and long-secrecy-life data</td><td>CISA, NSA and NIST, Quantum-Readiness (2023); NCSC, Next Steps (2023, updated 2024)</td><td class="status-borrow">external guidance</td></tr>
+        <tr><td>Sector-level HNDL exposure</td><td><a class="src" href="https://doi.org/10.5281/zenodo.20767648" target="_blank" rel="noopener">Garcia, Marcelino and Rufino, IEQ Technical Report 2026-S1</a></td><td class="status-borrow">related technical work</td></tr>
+        <tr><td>Cryptographic inventory tooling</td><td>Tenev, qrp-mcp (2026)</td><td class="status-borrow">related technical work</td></tr>
+        <tr><td>Three-clock exposure structure</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
+        <tr><td>Evidence, coverage and expiry adjustments</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
+        <tr><td>Key-establishment and signature split</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
+        <tr><td>Common-driver and concentration treatment</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
+        <tr><td>Severity separation and RARI</td><td>QER white paper</td><td class="status-orig">our approach</td></tr>
       </tbody>
     </table>
     </div>
-    <p class="note">Related models exist, including <a class="src" href="https://doi.org/10.3390/electronics14173338" target="_blank" rel="noopener">QARS (Electronics, 2025)</a> and <a class="src" href="https://arxiv.org/abs/2605.22569" target="_blank" rel="noopener">Rufino et al.'s IEQ (arXiv, 2026)</a>. The white paper sets out how QER differs.</p>
-  </section>
-
-  <section>
-    <div class="strip">
-      <div class="num">26.39<span style="font-size:18px;color:var(--ink-soft)"> / 100</span></div>
-      <div class="label">worked example &middot; central scenario &middot; &kappa; = 1e-7, uncalibrated</div>
-      <p>One insured holding health, identification and financial data, with &pound;15m at risk, scores 26.39.
-        That gives a relativity of 1.211, a loading of about 21 percent on the insurer's base rate, in the
-        Elevated band. The same data at a higher migration maturity would score lower without a single pound changing.</p>
-      <p>&kappa; is not calibrated. With every other input fixed, &kappa; alone moves this account from Standard
-        to Severe. Until an insurer sets it from real loss experience, read QER as a ranking of accounts under
-        one &kappa;, not as an absolute measure of risk.</p>
-    </div>
+    <p class="note">Related models include <a class="src" href="https://doi.org/10.3390/electronics14173338" target="_blank" rel="noopener">QARS (Electronics, 2025)</a> and <a class="src" href="https://arxiv.org/abs/2605.22569" target="_blank" rel="noopener">Rufino et al.'s IEQ (arXiv, 2026)</a>.</p>
   </section>
 
   <section>
     <div class="eyebrow">status</div>
-    <h2>Where this actually stands</h2>
-    <p>QER is a solid first version, not a finished actuarial standard. Its inputs come from named,
-      checkable sources. The migration shape values and &kappa; are placeholders, and are labeled as such.
-      What QER can't do yet is validate against real losses, because there is no HNDL claims experience
-      to validate against. That is the gap a design partner closes.</p>
+    <h2>What QER can and cannot yet claim</h2>
+    <div class="two">
+      <div class="glass box"><div class="k">can</div><ul><li>Organise HNDL uncertainty</li><li>Separate timing from severity</li><li>Make evidence and unknown scope visible</li><li>Identify shared dependencies</li><li>Support governed relative comparison</li></ul></div>
+      <div class="glass box dim"><div class="k">cannot yet</div><ul><li>Claim a validated quantum loss cost</li><li>Set technical premium or capital</li><li>Support binding or portfolio limits</li><li>Automate underwriting decisions</li></ul></div>
+    </div>
+    <p style="margin-top:20px">QER is mathematically specified and built to pass structural validation. It has not been empirically
+      validated, because there is no body of HNDL claims to validate against yet. That is the gap a design partner closes.</p>
   </section>
 
   <footer class="qer-foot">
