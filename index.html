@@ -124,6 +124,20 @@
   </div>
 </nav>
 
+<a class="qer-bar" href="#qer-whitepaper-gate">
+  <style>
+    .qer-bar{display:block;text-decoration:none;background:linear-gradient(90deg,rgba(28,171,169,0.16),rgba(5,8,26,0.6) 70%);border-bottom:1px solid rgba(28,171,169,0.30);}
+    .qer-bar .wrap{display:flex;align-items:center;gap:12px;padding-top:10px;padding-bottom:10px;}
+    .qer-bar img{height:28px;width:auto;flex:0 0 auto;}
+    .qer-bar .tag{font-family:'JetBrains Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#05081a;background:#5FD3D1;border-radius:4px;padding:2px 7px;flex:0 0 auto;}
+    .qer-bar .txt{color:var(--ink);font-size:0.9rem;}
+    .qer-bar .txt b{color:#5FD3D1;font-weight:600;}
+    .qer-bar:hover .txt b{text-decoration:underline;}
+    @media (max-width:560px){.qer-bar .txt{font-size:0.82rem;}}
+  </style>
+  <div class="wrap"><img src="qer-logo-dark.png" alt="" width="26" height="28"><span class="tag">New</span><span class="txt">QER v3: Three Clocks to Q-Day. <b>Request the white paper &rarr;</b></span></div>
+</a>
+
 <header class="hero">
   <div class="wrap">
     <div class="eyebrow">Pre-customer &middot; Internally tested</div>
@@ -131,6 +145,7 @@
     <p class="sub">ARIA is designed to capture compliance-relevant evidence at the point of decision — what happened, when, under which rules, and that nothing was changed afterward — rather than reconstructing it after the fact.</p>
     <div class="cta-row">
       <a class="btn btn-primary" href="mailto:daniel.stokes@ariaengaged.co.uk">Get in touch</a>
+      <a class="btn btn-ghost" href="#qer-whitepaper-gate">QER white paper</a>
       <a class="btn btn-ghost" href="register-vertical.html">Register a vertical</a>
       <a class="btn btn-ghost" href="#proof">See the hash demo</a>
     </div>
@@ -146,6 +161,82 @@
     </div>
   </div>
 </header>
+
+<section id="qer-whitepaper-gate" class="qer-section">
+  <style>
+    .qer-section { padding: 8px 0 56px; scroll-margin-top: 24px; }
+    .qer-glass {
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center;
+      padding: 36px;
+      background: linear-gradient(135deg, rgba(28,171,169,0.14), rgba(20,30,45,0.42) 45%, rgba(11,61,96,0.30));
+      backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border: 1px solid rgba(28,171,169,0.30); border-radius: 18px;
+      box-shadow: 0 0 50px rgba(28,171,169,0.12), inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.25);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .qer-glass:hover { border-color: rgba(28,171,169,0.50); box-shadow: 0 0 60px rgba(28,171,169,0.18), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.25); }
+    .qer-glass::before {
+      content: ""; position: absolute; top: -120px; right: -80px; width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(28,171,169,0.22), transparent 70%); pointer-events: none;
+    }
+    .qer-glass > * { position: relative; }
+    .qer-plate { padding: 0; }
+    .qer-plate img { height: 120px; width: auto; display: block; filter: drop-shadow(0 0 14px rgba(28,171,169,0.35)); }
+    .qer-status {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #5FD3D1; border: 1px solid rgba(28,171,169,0.35); background: rgba(28,171,169,0.08);
+      padding: 6px 12px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .qer-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #1CABA9; box-shadow: 0 0 8px #1CABA9; }
+    .qer-glass h2 { font-size: clamp(1.35rem, 3vw, 1.7rem); line-height: 1.2; color: #fff; margin: 0 0 10px; text-shadow: 0 0 24px rgba(28,171,169,0.30); }
+    .qer-glass p { margin: 0; color: var(--ink-dim); font-size: 0.98rem; max-width: 56ch; }
+    .qer-glass p a { color: #5FD3D1; text-decoration: none; font-weight: 600; white-space: nowrap; }
+    .qer-glass p a:hover { text-decoration: underline; }
+    .qer-form { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+    .qer-form input {
+      flex: 1 1 180px; min-width: 0; padding: 12px 14px; font-family: 'Inter', sans-serif; font-size: 0.95rem;
+      color: var(--ink); background: rgba(0,0,0,0.30); border: 1px solid rgba(233,242,242,0.12); border-radius: 8px;
+    }
+    .qer-form input::placeholder { color: rgba(159,179,181,0.75); }
+    .qer-form input:focus { border-color: rgba(28,171,169,0.60); outline: none; box-shadow: 0 0 0 3px rgba(28,171,169,0.18); }
+    .qer-form button {
+      flex: 0 0 auto; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.92rem;
+      padding: 12px 24px; border-radius: 8px; border: none; cursor: pointer; color: #03151a;
+      background: linear-gradient(90deg, #1CABA9, #5FD3D1); box-shadow: 0 0 24px rgba(28,171,169,0.35);
+    }
+    .qer-form button:hover { box-shadow: 0 0 32px rgba(28,171,169,0.55); }
+    .qer-form button:focus-visible, .qer-glass a:focus-visible { outline: 2px solid #5FD3D1; outline-offset: 2px; }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .qer-glass { background: rgba(14,26,40,0.92); }
+    }
+    @media (max-width: 640px) {
+      .qer-glass { grid-template-columns: 1fr; gap: 22px; padding: 24px 20px; }
+      .qer-plate { justify-self: start; }
+      .qer-plate img { height: 92px; }
+      .qer-form button { flex: 1 1 100%; }
+    }
+  </style>
+  <div class="wrap">
+    <div class="qer-glass">
+      <div class="qer-plate"><img src="qer-logo-dark.png" alt="QER - Quantum Exposure Risk" width="110" height="120"></div>
+      <div>
+        <div class="qer-status">New &middot; v3 white paper &middot; 30 October 2026</div>
+        <h2>Three Clocks to Q-Day: what would still be exposed if quantum capability arrived?</h2>
+        <p>QER measures harvest-now, decrypt-later exposure as the overlap of three clocks: when quantum capability arrives, when migration completes and when the data stops mattering. A pre-pilot framework for cyber insurers, open for one design partner. <a href="qer.html">About QER &rarr;</a></p>
+      </div>
+      <form class="qer-form" action="https://formspree.io/f/xoejznpk" method="POST">
+        <input type="hidden" name="_subject" value="QER v3 white paper request (homepage)">
+        <input type="hidden" name="source" value="homepage">
+        <input type="text" name="name" placeholder="Name" required aria-label="Name">
+        <input type="email" name="email" placeholder="Work email" required aria-label="Work email">
+        <input type="text" name="company" placeholder="Company (optional)" aria-label="Company">
+        <button type="submit">Request the white paper</button>
+      </form>
+    </div>
+  </div>
+</section>
 
 <section id="substrate">
   <div class="wrap">
@@ -216,82 +307,6 @@
     <div class="scenario">
       <h3>A record is altered after the fact</h3>
       <img src="/scenario-tamper-clean.jpg" alt="A governed decision's record is altered after the fact; ARIA compares it against its original fingerprint; the mismatch is surfaced immediately; the alteration is provably detectable." style="width:100%;height:auto;border-radius:10px;display:block;">
-    </div>
-  </div>
-</section>
-
-<section id="qer-whitepaper-gate" class="qer-section">
-  <style>
-    .qer-section { padding: 56px 0 72px; }
-    .qer-glass {
-      position: relative; overflow: hidden;
-      display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center;
-      padding: 36px;
-      background: linear-gradient(135deg, rgba(28,171,169,0.14), rgba(20,30,45,0.42) 45%, rgba(11,61,96,0.30));
-      backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%);
-      border: 1px solid rgba(28,171,169,0.30); border-radius: 18px;
-      box-shadow: 0 0 50px rgba(28,171,169,0.12), inset 0 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(0,0,0,0.25);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-    .qer-glass:hover { border-color: rgba(28,171,169,0.50); box-shadow: 0 0 60px rgba(28,171,169,0.18), inset 0 1px 0 rgba(255,255,255,0.12), inset 0 -1px 0 rgba(0,0,0,0.25); }
-    .qer-glass::before {
-      content: ""; position: absolute; top: -120px; right: -80px; width: 320px; height: 320px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(28,171,169,0.22), transparent 70%); pointer-events: none;
-    }
-    .qer-glass > * { position: relative; }
-    .qer-plate { padding: 0; }
-    .qer-plate img { height: 120px; width: auto; display: block; filter: drop-shadow(0 0 14px rgba(28,171,169,0.35)); }
-    .qer-status {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
-      color: #5FD3D1; border: 1px solid rgba(28,171,169,0.35); background: rgba(28,171,169,0.08);
-      padding: 6px 12px; border-radius: 100px; margin-bottom: 14px;
-    }
-    .qer-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #1CABA9; box-shadow: 0 0 8px #1CABA9; }
-    .qer-glass h2 { font-size: clamp(1.35rem, 3vw, 1.7rem); line-height: 1.2; color: #fff; margin: 0 0 10px; text-shadow: 0 0 24px rgba(28,171,169,0.30); }
-    .qer-glass p { margin: 0; color: var(--ink-dim); font-size: 0.98rem; max-width: 56ch; }
-    .qer-glass p a { color: #5FD3D1; text-decoration: none; font-weight: 600; white-space: nowrap; }
-    .qer-glass p a:hover { text-decoration: underline; }
-    .qer-form { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
-    .qer-form input {
-      flex: 1 1 180px; min-width: 0; padding: 12px 14px; font-family: 'Inter', sans-serif; font-size: 0.95rem;
-      color: var(--ink); background: rgba(0,0,0,0.30); border: 1px solid rgba(233,242,242,0.12); border-radius: 8px;
-    }
-    .qer-form input::placeholder { color: rgba(159,179,181,0.75); }
-    .qer-form input:focus { border-color: rgba(28,171,169,0.60); outline: none; box-shadow: 0 0 0 3px rgba(28,171,169,0.18); }
-    .qer-form button {
-      flex: 0 0 auto; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 0.92rem;
-      padding: 12px 24px; border-radius: 8px; border: none; cursor: pointer; color: #03151a;
-      background: linear-gradient(90deg, #1CABA9, #5FD3D1); box-shadow: 0 0 24px rgba(28,171,169,0.35);
-    }
-    .qer-form button:hover { box-shadow: 0 0 32px rgba(28,171,169,0.55); }
-    .qer-form button:focus-visible, .qer-glass a:focus-visible { outline: 2px solid #5FD3D1; outline-offset: 2px; }
-    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-      .qer-glass { background: rgba(14,26,40,0.92); }
-    }
-    @media (max-width: 640px) {
-      .qer-glass { grid-template-columns: 1fr; gap: 22px; padding: 24px 20px; }
-      .qer-plate { justify-self: start; }
-      .qer-plate img { height: 92px; }
-      .qer-form button { flex: 1 1 100%; }
-    }
-  </style>
-  <div class="wrap">
-    <div class="qer-glass">
-      <div class="qer-plate"><img src="qer-logo-dark.png" alt="QER - Quantum Exposure Risk" width="110" height="120"></div>
-      <div>
-        <div class="qer-status">Pre-pilot &middot; Open for one design partner</div>
-        <h2>Quantum Exposure Risk white paper</h2>
-        <p>A competing-risks model that turns Harvest-Now-Decrypt-Later risk into a score, a pricing multiplier and an underwriting decision for cyber insurers. <a href="qer.html">About QER &rarr;</a></p>
-      </div>
-      <form class="qer-form" action="https://formspree.io/f/xoejznpk" method="POST">
-        <input type="hidden" name="_subject" value="QER white paper request (homepage)">
-        <input type="hidden" name="source" value="homepage">
-        <input type="text" name="name" placeholder="Name" required aria-label="Name">
-        <input type="email" name="email" placeholder="Work email" required aria-label="Work email">
-        <input type="text" name="company" placeholder="Company (optional)" aria-label="Company">
-        <button type="submit">Request the white paper</button>
-      </form>
     </div>
   </div>
 </section>
